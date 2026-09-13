@@ -1,0 +1,19 @@
+{
+  "brand": "20TO100K.IQ",
+  "country": "Iraq",
+  "currency": "USD",
+  "start_balance": 20,
+  "target_balance": 100000,
+  "current_balance": 20,
+  "status": "pre_launch",
+  "phase": "قبل أول تحديث موثق",
+  "last_update": null,
+  "days_elapsed": 0,
+  "total_trades": 0,
+  "winning_trades": 0,
+  "losing_trades": 0,
+  "breakeven_trades": 0,
+  "no_trade_days": 0,
+  "max_drawdown_percent": null,
+  "notes": "هذه بيانات تشغيلية أولية وليست نتيجة تداول. عدّل هذا الملف فقط عند وجود نتيجة حقيقية موثقة."
+}
