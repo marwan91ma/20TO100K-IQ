@@ -35,3 +35,11 @@
 
 ## Trading Lab v1
 أضيفت صفحة `pages/tools.html` كمختبر تداول شخصي يعمل محليًا في المتصفح، وتشمل حاسبة مخاطر، دفتر صفقات، Win Rate، Profit Factor، Max Drawdown، Peak Equity ومنحنى Equity. بيانات المختبر محلية ولا تُرسل تلقائيًا إلى GitHub.
+
+
+## Security update — Trading Lab V2
+- Public Trading Lab is read-only.
+- Visitor browsers cannot add, edit, or delete official challenge records.
+- Risk Calculator remains local and does not write challenge data.
+- Official results must come from the repository-controlled challenge data until a server-side authenticated admin/API is deployed.
+- Do not treat browser Local Storage as an official source of truth.
