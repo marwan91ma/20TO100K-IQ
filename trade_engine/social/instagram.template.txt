@@ -1,0 +1,11 @@
+🟢 TRADE #{TRADE_ID}
+
+{DIRECTION} {SYMBOL}
+Entry: {ENTRY}
+Exit: {EXIT}
+Result: {RESULT}
+P/L: {PROFIT}
+
+$20 → $100,000
+No Signals. No Guarantees. Risk First.
+🇮🇶 20 TO 100K | IRAQ

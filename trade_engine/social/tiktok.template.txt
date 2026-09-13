@@ -1,0 +1,11 @@
+HOOK: {HOOK}
+
+ON-SCREEN:
+TRADE #{TRADE_ID}
+{DIRECTION} {SYMBOL}
+Entry {ENTRY} → Exit {EXIT}
+{RESULT} | {PROFIT}
+
+END CARD:
+20 TO 100K | IRAQ 🇮🇶
+No Signals • No Guarantees

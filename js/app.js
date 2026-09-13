@@ -8,14 +8,20 @@ function progressPercent(c){return Math.max(0,Math.min(100,(Number(c.current_bal
 function targetProgress(c){return Math.max(0,Math.min(100,(Number(c.current_balance||c.start_balance)/Number(c.target_balance))*100));}
 async function renderHome(){
   const [c,t,m,u]=await Promise.all([getJSON('challenge.json'),getJSON('trades.json'),getJSON('milestones.json'),getJSON('updates.json')]);
-  const p=targetProgress(c); document.querySelectorAll('[data-balance]').forEach(x=>x.textContent=fmtUSD(c.current_balance));
+  const trades=Array.isArray(t.trades)?t.trades:[];
+  const normalized=trades.map(x=>({...x,result:String(x.result||'').toLowerCase()}));
+  const p=targetProgress(c);
+  document.querySelectorAll('[data-balance]').forEach(x=>x.textContent=fmtUSD(c.current_balance));
   const q=document.querySelector('[data-progress]'); if(q){q.style.width=`${p}%`; q.parentElement?.setAttribute('aria-valuenow',p.toFixed(2));}
-  const map={trades:t.trades.length,wins:t.trades.filter(x=>x.result==='win').length,losses:t.trades.filter(x=>x.result==='loss').length,noTrade:c.no_trade_days};
-  Object.entries(map).forEach(([k,v])=>{document.querySelectorAll(`[data-stat="${k}"]`).forEach(x=>x.textContent=fmtNum(v));});
-  const winRate=c.total_trades ? c.winning_trades/c.total_trades*100 : null; document.querySelectorAll('[data-winrate]').forEach(x=>x.textContent=pct(winRate));
-  renderMilestones(m,c); renderUpdates(u); renderTrades(t);
+  const wins=normalized.filter(x=>x.result==='win').length;
+  const losses=normalized.filter(x=>x.result==='loss').length;
+  const stats={trades:normalized.length,wins,losses,noTrade:Number(c.no_trade_days||0)};
+  Object.entries(stats).forEach(([k,v])=>document.querySelectorAll(`[data-stat="${k}"]`).forEach(x=>x.textContent=fmtNum(v)));
+  const winRate=normalized.length?wins/normalized.length*100:null;
+  document.querySelectorAll('[data-winrate]').forEach(x=>x.textContent=pct(winRate));
+  renderMilestones(m,c); renderUpdates(u); renderTrades({trades:normalized});
   document.querySelectorAll('[data-last-update]').forEach(x=>x.textContent=c.last_update||'لم يبدأ التوثيق بعد');
-  document.querySelectorAll('[data-phase]').forEach(x=>x.textContent=c.phase);
+  document.querySelectorAll('[data-phase]').forEach(x=>x.textContent=c.phase||'—');
 }
 function renderMilestones(m,c){const root=document.querySelector('[data-milestones]'); if(!root)return; root.innerHTML=m.milestones.map((x,i)=>{const passed=Number(c.current_balance)>=Number(x.value); const width=Math.min(100,Math.max(0,Number(c.current_balance)/Number(x.value)*100)); return `<div class="milestone"><strong>${esc(x.label)}</strong><div class="track"><i style="width:${width}%"></i></div><span class="${passed?'unlocked':'locked'}">${passed?'تم':'قادم'}</span></div>`}).join('');}
 function renderUpdates(u){const root=document.querySelector('[data-updates]'); if(!root)return; root.innerHTML=u.updates.map(x=>`<article class="update"><time>${esc(x.date)}</time><div><h4>${esc(x.title)}</h4><p>${esc(x.body)}</p></div></article>`).join('');}

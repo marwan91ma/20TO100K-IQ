@@ -1,0 +1,20 @@
+{
+  "id": "T001",
+  "trader": "Marwan",
+  "symbol": "XAUUSD.m",
+  "direction": "BUY",
+  "entry": null,
+  "exit": null,
+  "lot": null,
+  "stop_loss": null,
+  "take_profit": null,
+  "profit_usd": null,
+  "result": "PENDING",
+  "open_time": null,
+  "close_time": null,
+  "duration": null,
+  "risk_usd": null,
+  "r_multiple": null,
+  "notes": "",
+  "official": false
+}

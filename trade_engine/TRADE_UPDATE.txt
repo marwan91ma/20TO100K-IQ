@@ -1,0 +1,47 @@
+20TO100K.IQ — TRADE UPDATE INBOX
+================================
+
+الغرض: تحديث بيانات الصفقات فقط، بدون تعديل تصميم الموقع.
+
+WORKFLOW
+1) ضع Screenshot الصفقة في: trade_engine/inbox/
+2) أرسل الصورة للمراجعة والاستخراج.
+3) تُستخرج البيانات الظاهرة فقط: الاتجاه، الرمز، Entry, Exit, Lot, SL, TP, P/L, الوقت وغيرها.
+4) راجع البيانات قبل الاعتماد.
+5) بعد الاعتماد تُضاف الصفقة إلى data/trades.json.
+6) عند الحاجة حدّث data/challenge.json و data/updates.json.
+7) أنشئ نصوص السوشيال في trade_engine/social/.
+8) نفّذ git diff --check ثم commit/push.
+
+NEW TRADE
+----------
+ID:
+Trader:
+Symbol:
+Direction: BUY / SELL
+Entry:
+Exit:
+Lot:
+Stop Loss:
+Take Profit:
+Profit USD:
+Result: WIN / LOSS / BE
+Open Time:
+Close Time:
+Duration:
+Risk USD:
+R Multiple:
+Notes:
+
+APPROVAL
+--------
+Status: PENDING
+Approved By:
+Approved At:
+
+RULES
+-----
+- لا نخمن أي رقم غير ظاهر أو غير مؤكد.
+- لا تُضاف صفقة إلى السجل الرسمي بدون اعتماد.
+- لا تُنشأ أرباح أو نتائج وهمية.
+- لا تحفظ API keys أو passwords أو broker credentials هنا.

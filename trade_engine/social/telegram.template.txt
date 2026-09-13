@@ -1,0 +1,6 @@
+🟢 TRADE #{TRADE_ID}
+{DIRECTION} {SYMBOL}
+Entry: {ENTRY} | Exit: {EXIT}
+Result: {RESULT} | P/L: {PROFIT}
+
+$20 → $100K | Risk First.

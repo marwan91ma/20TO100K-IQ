@@ -36,3 +36,6 @@ git add data/
 git commit -m "Update challenge data"
 git push
 ```
+
+## V3 Trade Engine
+الملف `trade_engine/TRADE_UPDATE.txt` هو نقطة الإدخال المنفصلة لتحديث الصفقات. المصدر الرسمي يبقى `data/trades.json` بعد الاعتماد.
